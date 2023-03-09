@@ -343,10 +343,3 @@ Style/InverseMethods:
 Style/ZeroLengthPredicate:
   Description: 'empty? instead of length == 0'
   Enabled: false
-
-Layout/IndentationStyle:
-  EnforcedStyle: 'tabs'
-  IndentationWidth: 1
-
-Layout/IndentationWidth:
-  Width: 1
