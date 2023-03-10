@@ -1,0 +1,14 @@
+welcome: "Welcome to Mortgage Calculator!"
+lines: "-------------------------------"
+lines2: "--------------------------------------------------"
+principal_prompt: "Please enter the principal amount"
+years_prompt: "Please enter the number of years in loan duration"
+months_prompt: "Please enter the additional months after years"
+apr_prompt: "Please enter the annual percentage rate"
+error: "Invalid input. Please try again"
+another?: | 
+    Another Calculation? 
+    (y or yes to calculate again)
+    (n or no to end program)
+thanks: "Thank you for using the Mortgage Calculator!"
+goodbye: "Good Bye!"
