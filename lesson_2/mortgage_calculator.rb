@@ -52,20 +52,6 @@ def total_amount(principal, total_interest)
   principal + total_interest
 end
 
-# Loop prompt for inputs (Doesn't work. Inf + NaN error)
-def loop_prompt(key, var)
-	 loop do
-		  print_message(MESSAGES[key])
-		  var = gets.chomp
-		  if var.empty? || number?(var) == false
-				  print_message(MESSAGES['error'])
-				  next
-		  else
-				  break
-		  end
-	 end
-end
-
 # Constant variable declarations
 RATE_MULTIPLIER = 100
 MONTH_NUMBER = 12
@@ -82,7 +68,6 @@ print_message(MESSAGES['lines'])
 
 # Main Program
 loop do
-
   loop do
     print_message(MESSAGES['principal_prompt'])
     principal = gets.chomp
@@ -90,19 +75,19 @@ loop do
       print_message(MESSAGES['error'])
       next
     else
-					 principal = principal.to_f.round(2)
-						break
+      principal = principal.to_f.round(2)
+      break
     end
-		end
+  end
 
-		loop do
+  loop do
     print_message(MESSAGES['years_prompt'])
     years = gets.chomp
     if years.empty? || integer?(years) == false
       print_message(MESSAGES['error'])
       next
-				else
-					 break
+    else
+      break
     end
   end
 
@@ -112,21 +97,21 @@ loop do
     if months.empty? || integer?(months) == false
       print_message(MESSAGES['error'])
       next
-				else
-					 break
+    else
+      break
     end
-			end
+  end
 
-		loop do
+  loop do
     print_message(MESSAGES['apr_prompt'])
     rate = gets.chomp
     if rate.empty? || number?(rate) == false
       print_message(MESSAGES['error'])
       next
-				else
-					 break
+    else
+      break
     end
-			end
+  end
 
   # Method calls
   mrate = monthly_rate(rate)
@@ -146,19 +131,18 @@ loop do
 
   print_message(MESSAGES['lines2'])
 
-  
-		loop do
-			 print_message(MESSAGES['another?'])
-			 ans = gets.chomp
+  loop do
+    print_message(MESSAGES['another?'])
+    ans = gets.chomp
     if ans.downcase.start_with?('y', 'yes')
-					 break
-		  elsif ans.downcase.start_with?('n', 'no')
-			   break
-		  else
-		    print_message(MESSAGES['error'])
-		  end
-		end
-		break if ans.downcase.start_with?('n', 'no')
+      break
+    elsif ans.downcase.start_with?('n', 'no')
+      break
+    else
+      print_message(MESSAGES['error'])
+    end
+  end
+  break if ans.downcase.start_with?('n', 'no')
 end
 
 print_message(MESSAGES['thanks'])
