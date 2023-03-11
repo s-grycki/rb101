@@ -52,68 +52,64 @@ def total_amount(principal, total_interest)
   principal + total_interest
 end
 
+# Input validator if only integers are allowed
+def input_validator_int(key, val)
+  loop do
+    print_message(MESSAGES[key])
+    val = gets.chomp
+    if val.empty? || integer?(val) == false
+      print_message(MESSAGES['error'])
+    else
+      break
+    end
+  end
+  val
+end
+
+# Input validator if floats are allowed
+def input_validator_float(key, val)
+  loop do
+    print_message(MESSAGES[key])
+    val = gets.chomp
+    if val.empty? || number?(val) == false
+      print_message(MESSAGES['error'])
+    else
+      break
+    end
+  end
+  val
+end
+
+# Asks if user wants to calculate again
+def again?(val)
+  loop do
+    print_message(MESSAGES['another?'])
+    val = gets.chomp
+    if val.downcase.start_with?('y', 'yes', 'n', 'no')
+      return val
+    else
+      print_message(MESSAGES['error'])
+    end
+  end
+end
+
 # Constant variable declarations
 RATE_MULTIPLIER = 100
 MONTH_NUMBER = 12
-
-# Variable declarations for loop block
-principal = nil
-years = nil
-months = nil
-rate = nil
-ans = nil
 
 print_message(MESSAGES['welcome'])
 print_message(MESSAGES['lines'])
 
 # Main Program
 loop do
-  loop do
-    print_message(MESSAGES['principal_prompt'])
-    principal = gets.chomp
-    if principal.empty? || number?(principal) == false
-      print_message(MESSAGES['error'])
-      next
-    else
-      principal = principal.to_f.round(2)
-      break
-    end
-  end
+  principal = input_validator_float('principal_prompt', principal)
+  years = input_validator_int('years_prompt', years)
+  months = input_validator_int('months_prompt', months)
+  rate = input_validator_float('apr_prompt', rate)
 
-  loop do
-    print_message(MESSAGES['years_prompt'])
-    years = gets.chomp
-    if years.empty? || integer?(years) == false
-      print_message(MESSAGES['error'])
-      next
-    else
-      break
-    end
-  end
+  # Wanted principal and rate to have different rounding rules
+  principal = principal.to_f.round(2)
 
-  loop do
-    print_message(MESSAGES['months_prompt'])
-    months = gets.chomp
-    if months.empty? || integer?(months) == false
-      print_message(MESSAGES['error'])
-      next
-    else
-      break
-    end
-  end
-
-  loop do
-    print_message(MESSAGES['apr_prompt'])
-    rate = gets.chomp
-    if rate.empty? || number?(rate) == false
-      print_message(MESSAGES['error'])
-      next
-    else
-      break
-    end
-  end
-
-  # Method calls
   mrate = monthly_rate(rate)
   print_message("Monthly Rate " + (mrate * RATE_MULTIPLIER).round(4).to_s + "%")
 
@@ -130,18 +126,7 @@ loop do
   print_message("Total Payment $#{format('%.2f', amount)}")
 
   print_message(MESSAGES['lines2'])
-
-  loop do
-    print_message(MESSAGES['another?'])
-    ans = gets.chomp
-    if ans.downcase.start_with?('y', 'yes')
-      break
-    elsif ans.downcase.start_with?('n', 'no')
-      break
-    else
-      print_message(MESSAGES['error'])
-    end
-  end
+  ans = again?(ans)
   break if ans.downcase.start_with?('n', 'no')
 end
 
