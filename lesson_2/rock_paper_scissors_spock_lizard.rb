@@ -3,11 +3,11 @@ MESSAGES = YAML.load_file('rpssl_messages.yml')
 
 # Hash of move keys with defeated values
 MOVES = {
-  'rock' => %w(scissors lizard),
-  'paper' => %w(rock spock),
-  'scissors' => %w(paper lizard),
-  'spock' => %w(scissors rock),
-  'lizard' => %w(spock paper)
+  'rock' => %w[scissors lizard],
+  'paper' => %w[rock spock],
+  'scissors' => %w[paper lizard],
+  'spock' => %w[scissors rock],
+  'lizard' => %w[spock paper]
 }
 
 # Hash of move abbreviations
@@ -24,31 +24,38 @@ def prompt(message)
   puts ">> #{message}"
 end
 
-# Error method if user enters one s
-def s_error
-  prompt(MESSAGES['s_error'])
-end
-
 # Converts abbreviated inputs to full form
 def abbr_converter(choice)
   ABBR_MOVES.values_at(choice).join
 end
 
+# Single s error
+def s_error_prompt
+  prompt(MESSAGES['s_error'])
+  input_choice
+end
+
+# Invalid input error
+def invalid_error_prompt
+  prompt(MESSAGES['invalid'])
+  input_choice
+end
+
+# Gets user choice
+def input_choice
+  prompt(MESSAGES['input'])
+  choice = gets.chomp.downcase
+  input_validator(choice)
+end
+
 # Validates user input
 def input_validator(choice)
   loop do
-    prompt(MESSAGES['input'])
-    choice = gets.chomp.downcase
-    if choice == 's'
-      s_error
-    elsif MOVES.key?(choice)
-      break
-    elsif ABBR_MOVES.key?(choice)
-      choice = abbr_converter(choice)
-      break
-    else
-      prompt(MESSAGES['invalid'])
-    end
+    choice = s_error_prompt if choice == 's'
+    break if MOVES.key?(choice)
+    break (choice = abbr_converter(choice)) if ABBR_MOVES.key?(choice)
+
+    choice = invalid_error_prompt
   end
   choice
 end
@@ -79,26 +86,23 @@ def increment_wins(player, computer, wins)
 end
 
 # Shows winner based on if player won 3 games
-def show_winner(wins)
-  winner = wins[:player_wins] == 3 ? "Player" : "Computer"
+def display_winner(wins)
+  winner = wins[:player_wins] == 3 ? 'Player' : 'Computer'
   prompt("#{winner} wins!")
 end
 
 # Asks user if they want to play again
-def play_again?(yes, no)
-  answer = nil
+def play_again?
+  yes = %w[y yes]
+  no = %w[n no]
   loop do
     prompt(MESSAGES['play_again?'])
     answer = gets.chomp.downcase
-    if yes.include?(answer)
-      break
-    elsif no.include?(answer)
-      break
-    else
-      prompt(MESSAGES['invalid'])
-    end
+    break true if yes.include?(answer)
+    break false if no.include?(answer)
+
+    prompt(MESSAGES['invalid'])
   end
-  answer
 end
 
 # Welcomes user and asks if they need instructions
@@ -115,18 +119,17 @@ loop do
   }
 
   until wins.value?(3)
-    choice = input_validator(choice)
+    choice = input_choice
     computer_choice = MOVES.keys.sample
     prompt("You chose: #{choice}; and computer chose: #{computer_choice}")
     display_results(choice, computer_choice)
     increment_wins(choice, computer_choice, wins)
     prompt("Player: #{wins[:player_wins]}. Computer: #{wins[:computer_wins]}")
+    prompt(MESSAGES['lines'])
   end
-  show_winner(wins)
-  yes = %w(y yes)
-  no = %w(n no)
-  answer = play_again?(yes, no)
-  break if no.include?(answer)
+
+  display_winner(wins)
+  break unless play_again?
 end
 
 prompt(MESSAGES['bye'])
