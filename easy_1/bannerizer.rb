@@ -53,9 +53,9 @@ end
 def print_in_box(string)
   puts top_bottom_lines(string)
   puts top_bottom_padding(string)
-		center_message(string)
-		puts top_bottom_padding(string)
-		puts top_bottom_lines(string)
+  center_message(string)
+  puts top_bottom_padding(string)
+  puts top_bottom_lines(string)
 end
 
 print_in_box('To boldly go where no one has gone before.')

@@ -35,8 +35,8 @@ Code:
 def word_setter(type)
   loop do
     print "Enter a #{type}: "
-				word = gets.chomp
-				break word unless word.empty? || word.class != String
+    word = gets.chomp
+    break word unless word.empty? || word.class != String
     puts "Please enter a word"
   end
 end

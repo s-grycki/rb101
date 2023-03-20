@@ -37,9 +37,9 @@ Code:
 
 def center_of(string)
   return if string.empty?
-		middle_character = string.length / 2
-		return string[middle_character] if string.length.odd?
-		return string[middle_character - 1..middle_character] if string.length.even?
+  middle_character = string.length / 2
+  return string[middle_character] if string.length.odd?
+  return string[middle_character - 1..middle_character] if string.length.even?
 end
 
 p center_of('I love ruby') == 'e'

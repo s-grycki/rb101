@@ -43,7 +43,7 @@ END CASE
 Code:
 =end
 
-	def normal(int)
+def normal(int)
   int.times { |i| puts ('*' * i) + '*' }
 end
 
@@ -62,11 +62,11 @@ end
 def triangle(int, position = 'NW')
   case position
     when 'NW' then normal(int)
-		  when 'SW' then upside_down(int)
-		  when 'NE' then mirrored(int)
+    when 'SW' then upside_down(int)
+    when 'NE' then mirrored(int)
     when 'SE' then upside_down_mirrored(int)
   end
-	end
+end
 
 triangle(9)
 triangle(9, 'SW')

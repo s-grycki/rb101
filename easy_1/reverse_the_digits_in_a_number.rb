@@ -31,7 +31,7 @@ Code:
 =end
 
 def reversed_number(int)
-		int = int.abs.digits.join.to_i
+  int = int.abs.digits.join.to_i
 end
 
 p reversed_number(12345) == 54321
