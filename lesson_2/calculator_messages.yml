@@ -1,43 +1,28 @@
 en:
   welcome: "Welcome to Calculator! Enter your name:"
-  valid_name: "Make sure to enter a valid name."
-  greet: "Hi "
-  first: "What's the first number?"
-  second: "What's the second number?"
-  valid_num: "Hmm... that doesn't look like a valid number"
-  valid_operator: "Must choose 1, 2, 3 or 4"
-  add: "Adding the two numbers"
-  subtract: "Subtracting the two numbers"
-  multiply: "Multiplying the two numbers"
-  divide: "Dividing the two numbers"
-  result: "The result is "
-  again: "Do you want to perform another calculation? (Y to calculate again)"
-  farewell: "Thank you for using the calculator. Good bye!"
-  operator: |
+  invalid_name: "Make sure to use a valid name"
+  invalid_number: "Hmm.. that doesn't look like a valid number"
+  invalid_operator: "Must choose 1, 2, 3, or 4"
+  invalid_yes_no: "Please answer yes or no"
+  another_calculation: "Do you want to perform another calculation? (Yes or No)"
+  bye: "Thank you for using the calculator. Good bye!"
+  operator_prompt: |
       What operation would you like to perform?
       1) add
       2) subtract
       3) multiply
       4) divide
-
 es:
-  welcome: "Bienvenido a la calculadora! Entre su nombre:"
-  valid_name: "Asegúrese de entrar un nombre válido."
-  greet: "Hola "
-  first: "¿Cuál es el primer número?"
-  second: "¿Cuál es el segundo número?"
-  valid_num: "Hmm... eso no parece un número válido"
-  valid_operator: "Debe elegir 1, 2, 3 o 4"
-  add: "sumando los dos numeros"
-  subtract: "Restando los dos números"
-  multiply: "Multiplicar los dos números"
-  divide: Dividiendo los dos números
-  result: "El resultado es "
-  again: "¿Desea realizar otro cálculo? (Y para calcular de nuevo)"
-  farewell: "Gracias por usar la calculadora. ¡Adiós!"
-  operator: |
+  welcome: "¡Bienvenido a Calculadora! Introduzca su nombre:"
+  invalid_name: "Asegúrate de usar un nombre válido"
+  invalid_number: "Hmm... eso no parece un número válido"
+  invalid_operator: "Debe elegir 1, 2, 3 o 4"
+  invalid_yes_no: "por favor responda si o no"
+  another_calculation: "¿Desea realizar otro cálculo? (Sí o no)"
+  bye: "Gracias por usar la calculadora. ¡Adiós!"
+  operator_prompt: |
       ¿Qué operación le gustaría realizar?
       1) agregar
-      2) restar
+      2) sustraer
       3) multiplicar
       4) dividir
