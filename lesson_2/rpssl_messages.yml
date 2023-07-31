@@ -1,0 +1,20 @@
+rules: |
+    This game is called Rock, Paper, Scissors, Spock, Lizard
+    Scissors cuts Paper covers Rock crushes Lizad poisons 
+    Spock smashes Scissors decapitates Lizard eats Paper
+    disproves Spock vaporizes Rock crushes Scissors
+    -----------------------------------------------------------
+    You may enter one letter as a shorthand for values
+    but 's values' must have two letters (sp for Spock)
+    -----------------------------------------------------------
+    The game will continue until you or the computer get 3 wins
+s_error: "Please enter two letters for s values"
+input: "Please enter your choice"
+invalid: "Please enter a valid input"
+u_win: 'You won!'
+c_win: 'Computer won!'
+tie: "It's a tie!"
+play_again?: "Would you like to play again?"
+help?: "Enter help if you want to see the rules. Press any other key to continue"
+bye: "Thank you for playing. Good bye!"
+lines: "------------------------------------------------------"
