@@ -12,7 +12,7 @@ put !! before something, like !!user_name
 though it doesn't actually determine what a defined method will do. 
 
 1. != is saying not equal to. It should be used when checking for "not" equality
-2. ! is saying "not this." It's checking the value for false instead of true
+2. ! is saying "not this." It's setting the boolean value for false instead of true
 3. This is a mutating method which changes the value pointed to in memory
 4. This is part of a ternary check. If evaluated expression is true, then this
 5. This is checking if something equates to true or false
